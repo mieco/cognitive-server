@@ -32,8 +32,8 @@ app.post('/profile', upload.single('datafile'), function (req, res, next) {
   // req.body will hold the text fields, if there were any
   let file = req.file;
   let filePath = file.path;
-  console.log(req.file);
-  console.log(req.body);
+  console.log(filePath);
+
 
   res.end('success')
 })

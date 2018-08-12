@@ -2,44 +2,44 @@
   "schema": {
     "nodes": [
       {
-        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model" (http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model') ,
+        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
         "label": "model",
         "type": "owl:class"
       },
       {
-        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer" (http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer') ,
-        "label":"manufacturer",
+        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+        "label": "manufacturer",
         "type": "owl:class"
       }
     ],
     "edges": [
       {
-        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel" (http://www.semanticweb.org/watson/ontologies/it_kg#hasModel') ,
+        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
         "type": "owl:ObjectProperty",
         "label": "hasModel",
-        "source": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer" (http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer') ,
-        "target": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model" (http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model') 
+        "source": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+        "target": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model"
       }
     ]
   },
   "kg": {
     "nodes": [
       {
-        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#5877" (http://www.semanticweb.org/watson/ontologies/it_kg#5877') ,
-        "label":"5877",
-        "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model" (http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model') 
+        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#5877",
+        "label": "5877",
+        "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model"
       },
       {
-        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR" (http://www.semanticweb.org/watson/ontologies/it_kg#NCR') ,
-        "label":"ncr",
-        "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer" (http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer') 
-      },
+        "id": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+        "label": "ncr",
+        "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer"
+      }
     ],
     "edges": [
       {
-        "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel" (http://www.semanticweb.org/watson/ontologies/it_kg#hasModel') ,        
-        "source": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR" (http://www.semanticweb.org/watson/ontologies/it_kg#NCR') ,
-        "target": "http://www.semanticweb.org/watson/ontologies/it_kg#5877" (http://www.semanticweb.org/watson/ontologies/it_kg#5877') 
+        "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+        "source": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+        "target": "http://www.semanticweb.org/watson/ontologies/it_kg#5877"
       }
     ]
   }
