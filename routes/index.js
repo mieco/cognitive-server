@@ -49,7 +49,7 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
       let about = $(ele).attr('rdf:about');
       let node = {
         id: about,
-        lable: parseUrl(about)[1],
+        label: parseUrl(about)[1],
         type: 'owl:Class'
       }
       result.schema.nodes.push(node);
@@ -85,7 +85,7 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
       let label = $(ele).find('rdfs\\:hasLabel').first().text();
       let node = {
         id: instanceAbout,
-        lable: label,
+        label: label,
         type: typeRdf.attr('rdf:resource')
       }
 
@@ -104,7 +104,8 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
               id: `${parseUrl(instanceAbout)[1]}___${relationModel.label}___${parseUrl(targetAbout)[1]}`,
               source: instanceAbout,
               target: targetAbout,
-              type: relationModel.id
+              type: relationModel.id,
+              label: relationModel.label
             }
             result.kg.edges.push(relation);
           }
