@@ -1,0 +1,117 @@
+import {
+    Component,
+    OnInit
+  } from '@angular/core';
+  
+  import { AppState } from '../app.service';
+  import { Title } from './title';
+  import { XLargeDirective } from './x-large';
+  import { FileUploader, FileItem } from 'ng2-file-upload';
+  const cytoscape = require('cytoscape');
+  const coseBilkent = require('cytoscape-cose-bilkent');
+  const dagre = require('cytoscape-dagre');
+  const cola = require('cytoscape-cola')
+  
+  cytoscape.use(cola);
+  
+  @Component({
+    /**
+     * The selector is what angular internally uses
+     * for `document.querySelectorAll(selector)` in our index.html
+     * where, in this case, selector is the string 'home'.
+     */
+    selector: 'home',  // <home></home>
+    /**
+     * We need to tell Angular's Dependency Injection which providers are in our app.
+     */
+    providers: [
+      Title
+    ],
+    /**
+     * Our list of styles in our component. We may add more to compose many styles together.
+     */
+    styleUrls: ['./home.component.css'],
+    /**
+     * Every Angular template is first compiled by the browser before Angular runs it's compiler.
+     */
+    templateUrl: './home.component.html'
+  })
+  export class HomeComponent implements OnInit {
+    /**
+     * Set our default values
+     */
+    public localState = { value: '' };
+    /**
+     * TypeScript public modifiers
+     */
+    private edgeStyle = {
+      'curve-style': 'bezier',
+      'target-arrow-shape': 'triangle',
+      'width': 1.5,
+      'line-color': '#ddd',
+      'target-arrow-color': '#ddd',
+      'label': 'data(label)',
+      'font-size': 0.5,
+    }
+    public uploader: FileUploader = new FileUploader({
+      url: "api/transfer",
+      autoUpload: true,
+      itemAlias: "datafile"
+    });
+    private graph: any = {};
+    constructor(
+      public appState: AppState,
+      public title: Title
+    ) { }
+  
+    public ngOnInit() {
+      console.log('hello `Home` component');
+      console.log(cytoscape);
+  
+      this.uploader.onAfterAddingFile = function (item) {
+        console.log(item)
+      }
+  
+      this.uploader.onSuccessItem = (item, result) => {
+  
+        this.graph = JSON.parse(result);
+        var cy = cytoscape({
+  
+          container: document.getElementById('test'), // container to render in
+  
+          elements: [
+            ...this.graph.kg.nodes,
+            ...this.graph.kg.edges
+          ].map(ele => { return { data: ele } }),
+  
+          style: [ // the stylesheet for the graph
+            {
+              selector: 'node',
+              style: {
+                'background-color': '#666',
+                'label': 'data(label)',
+              }
+            },
+  
+            {
+              selector: 'edge',
+              style: this.edgeStyle
+            }
+          ],
+  
+          layout: {
+            name: 'concentric',
+            nodeSpacing: 50
+          }
+  
+        });
+      }
+    }
+  
+    public submitState(value: string) {
+      console.log('submitState', value);
+      this.appState.set('value', value);
+      this.localState.value = '';
+    }
+  }
+  
