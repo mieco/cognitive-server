@@ -1,0 +1,568 @@
+{
+    "root": {
+      "tag": "rdf:RDF",
+      "attr": {
+        "xmlns": "http://www.semanticweb.org/watson/ontologies/it_kg#",
+        "xml:base": "http://www.semanticweb.org/watson/ontologies/it_kg",
+        "xmlns:it-kg": "http://www.semanticweb.org/watson/ontologies/it_kg#",
+        "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "xmlns:owl": "http://www.w3.org/2002/07/owl#",
+        "xmlns:xml": "http://www.w3.org/XML/1998/namespace",
+        "xmlns:xsd": "http://www.w3.org/2001/XMLSchema#",
+        "xmlns:rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+      }
+    },
+    "ontology": {
+      "tag": "owl:Ontology",
+      "attr": {
+        "rdf:about": "http://www.semanticweb.org/watson/ontologies/it_kg"
+      }
+    },
+    "properties": [
+      {
+        "tag": "owl:AnnotationProperty",
+        "id": "http://www.w3.org/2000/01/rdf-schema#hasLabel"
+      }
+    ],
+    "schema": {
+      "nodes": [
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "label": "MVS_Component",
+          "tag": "owl:Class"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+          "label": "MVS_Manufacturer",
+          "tag": "owl:Class"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "label": "MVS_Model",
+          "tag": "owl:Class"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Product",
+          "label": "MVS_Product",
+          "tag": "owl:Class"
+        }
+      ],
+      "edges": [
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#hasBrand",
+          "label": "hasBrand",
+          "tag": "owl:ObjectProperty",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Product",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+          "sourceType": "MVS_Product",
+          "targetType": "MVS_Manufacturer"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "owl:ObjectProperty",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Product",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "sourceType": "MVS_Product",
+          "targetType": "MVS_Component"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+          "label": "hasModel",
+          "tag": "owl:ObjectProperty",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "sourceType": "MVS_Manufacturer",
+          "targetType": "MVS_Model"
+        }
+      ]
+    },
+    "kg": {
+      "nodes": [
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "label": "ATM",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Product",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Anti_skimmer",
+          "label": "anti-skimmer",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Askim",
+          "label": "askim",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Bar_code_reader",
+          "label": "bar code reader",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Bill_acceptor",
+          "label": "bill acceptor",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Biometric_reader",
+          "label": "biometric reader",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Cable",
+          "label": "cables",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Camera",
+          "label": "camera",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Card_reader",
+          "label": "card reader",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Cartidge",
+          "label": "cartidge",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Cash_compartment",
+          "label": "cash compartment",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Cassette",
+          "label": "cassettes",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Deposit_ink_jet",
+          "label": "deposit ink jet",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Depositor",
+          "label": "depositor",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Dispenser",
+          "label": "dispenser",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Display",
+          "label": "display",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Drum",
+          "label": "drums",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#EPP",
+          "label": "EPPs",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Fascia",
+          "label": "fascia",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Feeder",
+          "label": "feeder",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Front_door",
+          "label": "front door",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Keyboard",
+          "label": "keyboard",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+          "label": "NCR",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer",
+          "label": "printer",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_journal",
+          "label": "printer-journal",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_passbook",
+          "label": "printer-passbook",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_receipt",
+          "label": "printer-receipt",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_statement",
+          "label": "printer-statement",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Vault",
+          "label": "vault",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Component",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#Wincor",
+          "label": "Wincor",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Manufacturer",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#2150xe",
+          "label": "2150xe",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#2250xe",
+          "label": "2250xe",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#5588",
+          "label": "5588",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#5875",
+          "label": "5875",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "tag": "owl:NamedIndividual"
+        },
+        {
+          "id": "http://www.semanticweb.org/watson/ontologies/it_kg#5877",
+          "label": "5877",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#MVS_Model",
+          "tag": "owl:NamedIndividual"
+        }
+      ],
+      "edges": [
+        {
+          "id": "Automated_teller_machine___hasBrand___NCR",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasBrand",
+          "label": "hasBrand",
+          "tag": "hasBrand"
+        },
+        {
+          "id": "Automated_teller_machine___hasBrand___Wincor",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Wincor",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasBrand",
+          "label": "hasBrand",
+          "tag": "hasBrand"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Anti_skimmer",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Anti_skimmer",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Askim",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Askim",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Bar_code_reader",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Bar_code_reader",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Bill_acceptor",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Bill_acceptor",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Biometric_reader",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Biometric_reader",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Cable",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Cable",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Camera",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Camera",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Card_reader",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Card_reader",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Cartidge",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Cartidge",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Cash_compartment",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Cash_compartment",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Cassette",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Cassette",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Deposit_ink_jet",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Deposit_ink_jet",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Depositor",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Depositor",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Dispenser",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Dispenser",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Display",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Display",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Drum",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Drum",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___EPP",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#EPP",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Fascia",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Fascia",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Feeder",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Feeder",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Front_door",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Front_door",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Keyboard",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Keyboard",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Printer",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Printer_journal",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_journal",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Printer_passbook",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_passbook",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Printer_receipt",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_receipt",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Printer_statement",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Printer_statement",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "Automated_teller_machine___hasComponent___Vault",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Automated_teller_machine",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#Vault",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasComponent",
+          "label": "hasComponent",
+          "tag": "hasComponent"
+        },
+        {
+          "id": "NCR___hasModel___5588",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#5588",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+          "label": "hasModel",
+          "tag": "hasModel"
+        },
+        {
+          "id": "NCR___hasModel___5875",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#5875",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+          "label": "hasModel",
+          "tag": "hasModel"
+        },
+        {
+          "id": "NCR___hasModel___5877",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#NCR",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#5877",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+          "label": "hasModel",
+          "tag": "hasModel"
+        },
+        {
+          "id": "Wincor___hasModel___2150xe",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Wincor",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#2150xe",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+          "label": "hasModel",
+          "tag": "hasModel"
+        },
+        {
+          "id": "Wincor___hasModel___2250xe",
+          "source": "http://www.semanticweb.org/watson/ontologies/it_kg#Wincor",
+          "target": "http://www.semanticweb.org/watson/ontologies/it_kg#2250xe",
+          "type": "http://www.semanticweb.org/watson/ontologies/it_kg#hasModel",
+          "label": "hasModel",
+          "tag": "hasModel"
+        }
+      ]
+    }
+  }

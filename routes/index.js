@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
-const fs = require('fs');
 var multer = require('multer')
 var upload = multer({
   dest: 'uploads/'
 })
 
 const cheerio = require('cheerio');
+var builder = require('xmlbuilder');
+var fs = require('fs');
+var path = require('path');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -32,6 +34,28 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
   let allRelationTypes = [];
   let allModelTypes = [];
   let result = {
+    root: {
+      tag: 'rdf:RDF',
+      attr: {
+        'xmlns': '',
+        'xml:base': '',
+        'xmlns:it-kg': '',
+        'xmlns:rdf': '',
+        'xmlns:owl': '',
+        'xmlns:xml': '',
+        'xmlns:xsd': '',
+        'xmlns:rdfs': ''
+      }
+    },
+    ontology: {
+      tag: 'owl:Ontology',
+      attr: {
+        'rdf:about': ''
+      }
+    },
+    properties: [
+
+    ],
     schema: {
       nodes: [],
       edges: []
@@ -43,6 +67,28 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
   };
   fs.readFile(filePath, (err, data) => {
     let $ = cheerio.load(data.toString());
+    let root = $('rdf\\:RDF');
+    let ontology = $('owl\\:Ontology');
+    for (const attr in result.root.attr) {
+      if (result.root.attr.hasOwnProperty(attr)) {
+        result.root.attr[attr] = root.attr(attr);
+      }
+    }
+
+    for (const attr in result.ontology.attr) {
+      if (result.ontology.attr.hasOwnProperty(attr)) {
+        result.ontology.attr[attr] = ontology.attr(attr);
+      }
+    }
+
+
+    // get all annotationproperties
+    $(`owl\\:AnnotationProperty`).each((index, ele) => {
+      result.properties.push({
+        tag: 'owl:AnnotationProperty',
+        id: $(ele).attr('rdf:about')
+      })
+    })
 
     // get all kinds of models
     $(`owl\\:Class`).each((index, ele) => {
@@ -50,7 +96,7 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
       let node = {
         id: about,
         label: parseUrl(about)[1],
-        type: 'owl:Class'
+        tag: 'owl:Class',
       }
       result.schema.nodes.push(node);
       allModelTypes.push(parseUrl(about)[1].toLowerCase());
@@ -67,7 +113,7 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
       let relation = {
         id: about,
         label: splitAbout[1],
-        type: 'owl:ObjectProperty',
+        tag: 'owl:ObjectProperty',
         source: $(sourceDomain).attr('rdf:resource'),
         target: $(targetRange).attr('rdf:resource'),
         sourceType: domainSplit[1],
@@ -86,7 +132,8 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
       let node = {
         id: instanceAbout,
         label: label,
-        type: typeRdf.attr('rdf:resource')
+        type: typeRdf.attr('rdf:resource'),
+        tag: 'owl:NamedIndividual'
       }
 
       // console.log($(ele).)
@@ -105,7 +152,8 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
               source: instanceAbout,
               target: targetAbout,
               type: relationModel.id,
-              label: relationModel.label
+              label: relationModel.label,
+              tag: relationModel.label
             }
             result.kg.edges.push(relation);
           }
@@ -117,6 +165,82 @@ router.post('/api/transfer', upload.single('datafile'), function (req, res, next
 
   })
 
+})
+
+
+router.post('/api/json2owl', function (req, res, next) {
+
+  let {
+    root,
+    ontology,
+    properties,
+    schema,
+    kg
+  } = req.body;
+  var rootXml = builder.create(root.tag);
+  for (const attr in root.attr) {
+    if (root.attr.hasOwnProperty(attr)) {
+      const element = root.attr[attr];
+      rootXml.attribute(attr, element)
+    }
+  }
+
+  let ontologyXml = rootXml.ele(ontology.tag);
+  for (const attr in ontology.attr) {
+    if (ontology.attr.hasOwnProperty(attr)) {
+      const element = ontology.attr[attr];
+      ontologyXml.attribute(attr, element)
+    }
+  }
+
+  properties.forEach(propterty => {
+    rootXml.ele(propterty.tag)
+      .attribute('rdf:about', propterty.id)
+  });
+
+  schema.edges.forEach(edge => {
+    let schemaEdgeXml = rootXml.ele(edge.tag);
+    schemaEdgeXml.attribute('rdf:about', edge.id)
+    schemaEdgeXml.ele('rdfs:domain').attribute('rdf:resource', edge.source)
+    schemaEdgeXml.ele('rdfs:range').attribute('rdf:resource', edge.target)
+  });
+
+  schema.nodes.forEach(node => {
+    rootXml.ele(node.tag)
+      .attribute('rdf:about', node.id)
+  })
+
+  kg.nodes.forEach(node => {
+    let kgNodeXml = rootXml.ele(node.tag);
+    kgNodeXml.attribute('rdf:about', node.id);
+    kgNodeXml.ele('rdf:type').attribute('rdf:resource', node.type);
+    let relations = kg.edges.filter(edge => edge.source === node.id);
+
+    relations.forEach(rel => {
+      kgNodeXml.ele(rel.tag).attribute('rdf:resource', rel.target)
+    })
+
+    kgNodeXml.ele('rdfs:hasLabel')
+      .attribute('rdf:datatype', 'http://www.w3.org/2001/XMLSchema#string')
+      .text(node.label)
+  })
+
+  var temFile = fs.createWriteStream(`uploads/${new Date().getTime()}.owl`)
+  temFile.write(rootXml.end({
+    pretty: true
+  }), 'utf-8')
+  temFile.end();
+  temFile.on('finish', () => {
+    res.json({
+      path: temFile.path
+    })
+  })
+})
+
+router.get('/api/downloadowl', function (req, res, next) {
+  console.log(req.query);
+  let filePath = path.resolve(__dirname, '../', req.query.filepath)
+  res.download(filePath);
 })
 
 function parseUrl(url) {
